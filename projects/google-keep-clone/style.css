@@ -1,0 +1,82 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container{
+    min-height: 100vh;
+    width: 100vw;
+    background-color: #333333;
+    padding: 23px;
+}
+
+#inputBox{
+    width: 80vw;
+    margin: auto;
+    border: 1px solid black;
+    padding: 23px;
+}
+#newNote{
+    margin-left: 96px;
+    margin-right: 96px;
+}
+
+input, textarea {
+    font-size: 18px;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    margin-top: 6px;
+    color: white;
+}
+
+button{
+    background: transparent;
+    color: white;
+    padding: 8px 12px;
+    border: 1px solid white;
+    cursor: pointer;
+}
+
+#newNote{
+    padding: 23px;
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: space-around; */
+}
+
+.note{
+    width: 300px;
+    margin: 12px;
+    padding: 12px;
+    background: transparent;
+    border: 1px solid black;
+    color: white;
+}
+
+.deleteNote{
+    float: right;
+    margin-left: 4px;
+}
+
+
+/* For deleted and archive buttons */
+.operations{
+    text-align: center;
+    padding-bottom: 10px;
+}
+.del-btn, .arch-btn{
+    margin: 8px;
+}
+
+.del-arch{
+    margin: auto;
+}
+.compo{
+    display: inline-block;
+}
+#archDiv{
+    margin-top: 4px;
+}

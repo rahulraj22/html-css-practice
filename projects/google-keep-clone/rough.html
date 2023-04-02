@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Show/Hide Div Content</title>
+	<style>
+		#my-div {
+			display: none;
+			padding: 10px;
+			border: 1px solid #ccc;
+		}
+	</style>
+</head>
+<body>
+	<button onclick="showDiv()">Show Content</button>
+	<div id="my-div">
+		<p>This is the content of my div.</p>
+		<p>It will be hidden by default and shown when the button is clicked.</p>
+	</div>
+
+	<script>
+		function showDiv() {
+			const div = document.getElementById('my-div');
+			div.style.display = 'block';
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Keep Clone</title>
+    <link rel="stylesheet" href="style.css"> 
+    <link rel="shortcut icon" href="google-keep.png" type="image/x-icon">  
+</head>
+<body>
+    <div class="container">
+        <div class="operations">
+            <button class="del-btn" onclick="toggleDel()">Deleted Notes</button>
+            <button class="arch-btn" onclick="toggleArc()">Archive Notes</button>
+        </div>
+        <div id="inputBox">
+            <input id="addTitle" type="text" placeholder="title">
+            <textarea id="addText" cols="30" rows="10" placeholder="Take a note..."></textarea>
+            <button id="addBtn">Add</button>
+        </div>
+
+        <!-- New notes block -->
+        <div id="newNote">
+            
+        </div>
+
+        <div id="delDiv">
+            <h3>Deleted Notes Section</h3>
+            <div id="delNotes">
+                
+            </div>
+        </div>
+
+        <div id="archDiv">
+            <h3>Archive Notes Section</h3>
+            <div id="archNotes">
+    
+            </div>
+        </div>
+
+    </div>
+    <script src="index.js">
+    </script>
+</body>
+</html>
