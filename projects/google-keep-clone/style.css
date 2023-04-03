@@ -10,7 +10,10 @@
     background-color: #333333;
     padding: 23px;
 }
-
+.title{
+    /* font-weight: bold; */
+    font-style: italic;
+}
 #inputBox{
     width: 80vw;
     margin: auto;
@@ -31,13 +34,20 @@ input, textarea {
     margin-top: 6px;
     color: white;
 }
-
+#addTitle{
+    border-bottom: 2px solid gray;
+}
 button{
     background: transparent;
     color: white;
     padding: 8px 12px;
     border: 1px solid white;
     cursor: pointer;
+    transition: all 0.25s;
+}
+button:hover{
+    background-color: white;
+    color: black;
 }
 
 #newNote{
@@ -48,7 +58,7 @@ button{
 }
 
 .note{
-    width: 300px;
+    width: 601px;
     margin: 12px;
     padding: 12px;
     background: transparent;
@@ -79,4 +89,10 @@ button{
 }
 #archDiv{
     margin-top: 4px;
+}
+
+h3{
+    color: white;
+    font-size: 34px;
+    text-align: center;
 }

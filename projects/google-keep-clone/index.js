@@ -2,14 +2,18 @@ const addTitle = document.getElementById('addTitle');
 const addText = document.getElementById('addText');
 const addNoteBtn = document.getElementById('addBtn');
 const newNoteDiv = document.getElementById('newNote');
+let yourNote = document.getElementById('yourNotes');
 
 // from deletedNotes.html
-const delNotesDiv = document.getElementById('delNotes');
-deleteArray = [];
+// const delNotesDiv = document.getElementById('delNotes');
+let deleteArray = [];
 
 // from archiveNotes
-const archNotesDiv = document.getElementById('archNotes');
-archiveArray = [];
+// const archNotesDiv = document.getElementById('archNotes');
+let archiveArray = [];
+
+
+
 
 showNotes();
 // Local storage vs session storage
@@ -56,6 +60,7 @@ function showNotes() {
             <div class="note">
                 <button class = "deleteNote" id = ${i} onclick="deleteNote(${i})">Delete</button>
                 <button class = "deleteNote" id = ${i} onclick="archiveNote(${i})">Archive</button>
+                <button class = "deleteNote" id = ${i} onclick="editNote(${i})">Edit</button>
                 <div class="title">${notes[i].title === "" ? 'Note' : notes[i].title}</div>
                 <div class="text">${notes[i].text}</div>
             </div>
@@ -63,7 +68,7 @@ function showNotes() {
     }
 
     // deleted notes | deletedNotes.html
-    deletedNotesHTML = '';
+    /* deletedNotesHTML = '';
     for (let i = 0; i < deleteArray.length; ++i) {
         deletedNotesHTML += 
         `
@@ -72,11 +77,11 @@ function showNotes() {
                 <div class="text">${deleteArray[i].text}</div>
             </div>
         `
-    }
-    delNotesDiv.innerHTML = deletedNotesHTML;
+    } */
+    // delNotesDiv.innerHTML = deletedNotesHTML;
     
     // archive notes 
-    archiveNotesHTML = '';
+    /* archiveNotesHTML = '';
     for (let i = 0; i < archiveArray.length; ++i) {
         archiveNotesHTML += 
         `
@@ -85,23 +90,21 @@ function showNotes() {
                 <div class="text">${archiveArray[i].text}</div>
             </div>
         `
-    }
-    archNotesDiv.innerHTML = archiveNotesHTML;
-
+    } */
+    // archNotesDiv.innerHTML = archiveNotesHTML;
+    
+    
+    
     newNoteDiv.innerHTML = notesHTML;
+    
+    /* Note checks */
+    if(notes.length == 0){
+        yourNote.innerText = "No notes found, create one!!✍";
+    }else{
+        yourNote.innerText = "Your Notes 📚";
+    }
 }
 
-function archiveNote(ind){
-    let notes = localStorage.getItem('notes')
-    if(notes === null){
-        return;
-    }
-    else{
-        notes = JSON.parse(notes);
-    }
-    archiveArray.push(notes[ind]);
-    showNotes();
-}
 
 
 function deleteNote(ind){
@@ -111,20 +114,49 @@ function deleteNote(ind){
     }else{
         notes = JSON.parse(notes);
     }
-
+    
     // deleteArray stores the deleted array
-    deleteArray.push(notes[ind]);
+    // deleteArray.push(notes[ind]);
     // console.log(deleteArray);  // got the array of objects
     // to get the title and text: deleteArray[0].title, deleteArray[0].text
-
+    
     // Now, I want to show this deleted notes...
-
-
-
+    
+	let deleteArray = JSON.parse(localStorage.getItem('del'));
+	if(deleteArray === null){
+        deleteArray = [];
+	}
+    deleteArray.push(notes[ind]);
+    localStorage.setItem('del', JSON.stringify(deleteArray));
+    
     notes.splice(ind, 1);
     localStorage.setItem('notes', JSON.stringify(notes));
     showNotes();
 }
+
+function archiveNote(ind){
+    let notes = JSON.parse(localStorage.getItem('notes'));
+    
+    archiveArray = JSON.parse(localStorage.getItem('arch'));
+    if(archiveArray === null) archiveArray = [];
+    archiveArray.push(notes[ind]);
+    notes.splice(ind, 1); // now that archived note removed from notes
+    localStorage.setItem('notes', JSON.stringify(notes));
+    localStorage.setItem('arch', JSON.stringify(archiveArray));
+    showNotes();
+}
+
+function editNote(ind){
+    let notes = JSON.parse(localStorage.getItem('notes'));
+    // console.log(notes[ind]);  // getting an object of that note(title + noteText)
+    // console.log(notes[ind].title, notes[ind].text);
+    addTitle.value = notes[ind].title;
+    addText.value = notes[ind].text;
+    notes.splice(ind, 1);
+    localStorage.setItem('notes', JSON.stringify(notes));
+    showNotes();
+}
+
 addNoteBtn.addEventListener('click', addNoteFunc);
 
 

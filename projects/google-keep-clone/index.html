@@ -11,21 +11,22 @@
 <body>
     <div class="container">
         <div class="operations">
-            <button class="del-btn" onclick="toggleDel()">Deleted Notes</button>
-            <button class="arch-btn" onclick="toggleArc()">Archive Notes</button>
+            <button class="del-btn" onclick="window.location.href = 'deletedNotes.html'">Deleted Notes</button>
+            <button class="arch-btn" onclick="window.location.href = 'archiveNotes.html'">Archive Notes</button>
         </div>
         <div id="inputBox">
-            <input id="addTitle" type="text" placeholder="title">
-            <textarea id="addText" cols="30" rows="10" placeholder="Take a note..."></textarea>
+            <input id="addTitle" type="text" placeholder="Enter your title" autofocus>
+            <textarea id="addText" cols="30" rows="10" placeholder="Take your note here..."></textarea>
             <button id="addBtn">Add</button>
         </div>
 
         <!-- New notes block -->
+        <h3 id="yourNotes" style="color:aliceblue; margin-bottom: -20px;"></h3>
         <div id="newNote">
             
         </div>
 
-        <div id="delDiv">
+        <!-- <div id="delDiv">
             <h3>Deleted Notes Section</h3>
             <div id="delNotes">
                 
@@ -37,7 +38,7 @@
             <div id="archNotes">
     
             </div>
-        </div>
+        </div> -->
 
     </div>
     <script src="index.js">

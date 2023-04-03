@@ -7,27 +7,41 @@
     <title>Google Keep Clone</title>
     <link rel="stylesheet" href="style.css"> 
     <link rel="shortcut icon" href="google-keep.png" type="image/x-icon">  
-    <style>
-        #delNotes{
-            margin-left: 400px;
-        }
-    </style>
 </head>
 <body>
     <div class="container">
         <div class="operations">
-            <button class="del-btn" onclick="window.location.href = 'index.html'">Home</button>
             <button class="del-btn" onclick="window.location.href = 'deletedNotes.html'">Deleted Notes</button>
             <button class="arch-btn" onclick="window.location.href = 'archiveNotes.html'">Archive Notes</button>
         </div>
-        <div id="delDiv">
+        <div id="inputBox">
+            <input id="addTitle" type="text" placeholder="Enter your title" autofocus>
+            <textarea id="addText" cols="30" rows="10" placeholder="Take your note here..."></textarea>
+            <button id="addBtn">Add</button>
+        </div>
+
+        <!-- New notes block -->
+        <h3 style="color:aliceblue; margin-bottom: -20px;">Your Notes</h3>
+        <div id="newNote">
+            
+        </div>
+
+        <!-- <div id="delDiv">
             <h3>Deleted Notes Section</h3>
             <div id="delNotes">
                 
             </div>
         </div>
+
+        <div id="archDiv">
+            <h3>Archive Notes Section</h3>
+            <div id="archNotes">
+    
+            </div>
+        </div> -->
+
     </div>
-    <script src="deletedNotes.js">
+    <script src="index.js">
     </script>
 </body>
 </html>
