@@ -13,8 +13,6 @@ let deleteArray = [];
 let archiveArray = [];
 
 
-
-
 showNotes();
 // Local storage vs session storage
 // JSON : javascript object notation (with the help of local storage)
@@ -49,24 +47,25 @@ function addNoteFunc() {
 function showNotes() {
     let notesHTML = '';
     let notes = localStorage.getItem('notes');
-    if(notes === null){
+    if(notes == null){
         return;
     }else{
         notes = JSON.parse(notes);
     }
     for (let i = 0; i < notes.length; ++i) {
+        if(notes[i] === null) continue;
         notesHTML += 
         `
             <div class="note">
                 <button class = "deleteNote" id = ${i} onclick="deleteNote(${i})">Delete</button>
                 <button class = "deleteNote" id = ${i} onclick="archiveNote(${i})">Archive</button>
                 <button class = "deleteNote" id = ${i} onclick="editNote(${i})">Edit</button>
-                <div class="title">${notes[i].title === "" ? 'Note' : notes[i].title}</div>
+                <div class="title">${notes[i].title === "" ? "Note" : notes[i].title}</div>
                 <div class="text">${notes[i].text}</div>
             </div>
         `
     }
-
+    
     // deleted notes | deletedNotes.html
     /* deletedNotesHTML = '';
     for (let i = 0; i < deleteArray.length; ++i) {
